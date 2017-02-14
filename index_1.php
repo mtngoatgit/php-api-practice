@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>100TB Skills Assessment</title>
+    <title>100TB Skills Assessment #1</title>
     <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
   </head>
@@ -42,7 +42,7 @@
     return $ungrouped['order_group'] == 'ungrouped';
   });
   ?>
-  
+
   <div class="task__section">
     <h2>All Data Retrieved and Manipulated (Task 1.a)</h2>
     <form class="" method="get">
@@ -96,8 +96,6 @@
          </div>";
       }
     }
-    // print_r($val1);
-    // discount($val1);
     discount($val1);
     ?>
   </div>
