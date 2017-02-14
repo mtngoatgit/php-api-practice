@@ -96,7 +96,7 @@
     </div> -->
 
 
-    <div class="task__section">
+    <!-- <div class="task__section">
       <h2>All Data Retrieved and Manipulated (Task 1.a)</h2>
       <form class="" method="get">
         Enter Client ID here: <input type="number" name="val1" value="0" required>
@@ -153,7 +153,44 @@
       // discount($val1);
       discount($val1);
       ?>
+    </div> -->
+
+    <div>
+        <div class="task__section">
+            <h2>All Data Retrieved and Manipulated (Task 2.a)</h2>
+            <?php
+            function all_servers(){
+              $client = new Client([
+                'base_uri' => 'https://devassess.100tb.com/',
+                'timeout' => 5.0
+              ]);
+              $response = $client->get('testServers');
+              $data = $response->getBody();
+              $data = json_decode($data, true);
+              foreach($data as $datum){
+                if ($datum['price'] == null ) {
+                  $datum['price'] = '-';
+                }
+                $new_server_id = str_replace('TB_', '', $datum['server_id']);
+                $datum['server_id'] = $new_server_id;
+                echo "<div class='grouping'>
+                  <div class='line-item'><span>ID:</span> {$datum["id"]}</div>
+                 <div class='line-item'><span>Server ID:</span> {$datum["server_id"]}</div>
+                 <div class='line-item'><span>Server Name:</span> {$datum["server_name"]}</div>
+                 <div class='line-item'><span>Client ID:</span> {$datum["client_id"]}</div>
+                 <div class='line-item'><span>Availability:</span> {$datum["available"]}</div>
+                 <div class='line-item'><span>Datacenter:</span> {$datum["datacenter"]}</div>
+                 <div class='line-item'><span>IP Address:</span>  {$datum["ip_address"]}</div>
+                 <div class='line-item'><span>Price:</span> $ {$datum["price"]}</div>
+                 <div class='line-item'><span>Server Description:</span> $ {$datum["server_description"]}</div>
+                 </div>";
+              }
+            }
+            all_servers();
+             ?>
+        </div>
     </div>
+
 
   </body>
 </html>
